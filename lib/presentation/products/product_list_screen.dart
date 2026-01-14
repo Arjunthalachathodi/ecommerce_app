@@ -3,7 +3,7 @@ import 'package:ecommerce_app/application/core/theme/colors.dart';
 import 'package:ecommerce_app/application/core/theme/text_styles.dart';
 import 'package:ecommerce_app/application/products/cubit/product_cubit.dart';
 import 'package:ecommerce_app/domain/products/models/product_model.dart';
-import 'package:ecommerce_app/presentation/products/widgets/product_card_shimmer.dart';
+import 'package:ecommerce_app/presentation/products/widgets/homepage_shimmer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
@@ -46,14 +46,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
       body: BlocBuilder<ProductCubit, ProductState>(
         builder: (context, state) {
           if (state.isLoading && state.products.isEmpty) {
-            return ListView(
-              padding: const EdgeInsets.all(20),
-              children: [
-                const ProductCardShimmer(),
-                const Gap(20),
-                const ProductCardShimmer(),
-              ],
-            );
+            return const HomepageShimmer();
           }
 
           if (state.failureOption.isSome() && state.products.isEmpty) {
